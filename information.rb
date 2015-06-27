@@ -26,7 +26,8 @@ download_bus_statuses.each do |bus_status|
   elsif bus_status.attribute("cnd").value == ""
     puts "わからん"
   else
-    puts "到着: #{bus_status.attribute("cnd").value.slice(/\d{1,3}/)}"
+    now_time = Time.now + bus_status.attribute("cnd").value.slice(/\d{1,3}/).to_i * 60
+    puts "到着: #{now_time.strftime("%R")}"
   end
   puts ""
 end
