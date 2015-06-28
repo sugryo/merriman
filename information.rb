@@ -29,5 +29,10 @@ download_bus_statuses.each do |bus_status|
     now_time = Time.now + bus_status.attribute("cnd").value.slice(/\d{1,3}/).to_i * 60
     puts "到着: #{now_time.strftime("%R")}"
   end
+  if bus_status.attribute("veh").value == "ノンステップ"
+    puts "ノンステップバス"
+  else
+    puts "標準バス"
+  end
   puts ""
 end
